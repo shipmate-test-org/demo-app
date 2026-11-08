@@ -33,3 +33,9 @@ function bookAppointment({ patientName, doctorId, date, time }) {
 }
 
 module.exports = { listDoctors, freeSlots, bookAppointment };
+
+// Appointments already booked with a doctor on a date, so the patient sees what is taken.
+function bookedSlots(doctorId, date) {
+  return appointments.filter((a) => a.doctorId === doctorId && a.date === date).map((a) => a.time);
+}
+module.exports.bookedSlots = bookedSlots;
